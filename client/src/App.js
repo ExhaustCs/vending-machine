@@ -1,23 +1,34 @@
 import './App.css';
-import { React, useEffect } from 'react';
+import { React } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Item } from './components/Item';
-import { Purchases } from './components/Purchases';
-import { AddItem } from './components/AddItem';
+
+// Components
+import { VendingMachinePage } from './Routes/Customer/VendingMachinePage';
+import { AddItemPage } from './Routes/Vendor/AddItem/AddItemPage';
+import { UpdateItemPage } from './Routes/Vendor/UpdateItem/UpdateItemPage';
+import { Purchases } from './Routes/Vendor/Purchases/Purchases';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path='/'
-          render={(props) => <Item {...props} title='HEY'></Item>}
-        />
-        <Route exact path='/vendor' render={() => <Purchases />} />
-        <Route exact path='/vendor/add' render={() => <AddItem />} />
-      </Switch>
-    </Router>
+    <div className='container'>
+      <Router>
+        <Switch>
+          {/* <Route
+            exact
+            path='/'
+            render={(props) => <Customer {...props} title='HEY'></Customer>}
+          /> */}
+          <Route exact path='/' render={() => <VendingMachinePage />} />
+          <Route exact path='/vendor' render={() => <Purchases />} />
+          <Route exact path='/vendor/add' render={() => <AddItemPage />} />
+          <Route
+            exact
+            path='/vendor/update'
+            render={() => <UpdateItemPage />}
+          />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

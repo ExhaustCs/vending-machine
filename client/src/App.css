@@ -1,4 +1,42 @@
-.history {
-  overflow-y: auto;
-  background-color: aquamarine;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #ffff;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: start;
+}
+
+/* 
+
+}
+
+ */
+
+/* td {
+  border: 1px solid #999;
+  padding: 0.5rem;
+} */
+
+/* input {
+  align-self: flex-end;
+} */

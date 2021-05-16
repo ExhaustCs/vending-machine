@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router';
+import { ItemTable, TableDiv } from './styles';
+import { VendorNavbar } from '../Shared/VendorNavBar';
 export const Purchases = () => {
   const [purchaseHistory, setPurchaseHistory] = useState([]);
   const [totalMoney, setTotalMoney] = useState();
   useEffect(() => getPurchases(), []);
   useEffect(() => getTotalMoney(), []);
-  const history = useHistory();
+
   const getPurchases = async () => {
     const response = await axios.get(
       'http://localhost:8080/api/vendor/purchases'
     );
-
     const { data } = response.data;
     setPurchaseHistory(data);
   };
-
-  const handleCustomerButton = () => history.push('/');
 
   const getTotalMoney = async () => {
     const response = await axios.get('http://localhost:8080/api/vendor/money');
@@ -27,8 +25,12 @@ export const Purchases = () => {
   return (
     <div>
       <h1>Purchase History</h1>
-      <div className='history'>
-        <table>
+      <TableDiv>
+        <div>
+          <VendorNavbar />
+          <h3>Total Money: ${totalMoney}</h3>
+        </div>
+        <ItemTable>
           <thead>
             <tr>
               <th>Description</th>
@@ -45,11 +47,8 @@ export const Purchases = () => {
               );
             })}
           </tbody>
-        </table>
-        <br></br>
-      </div>
-      <button onClick={() => handleCustomerButton()}>Customer</button>
-      <h3>Total Money {totalMoney}</h3>
+        </ItemTable>
+      </TableDiv>
     </div>
   );
 };
