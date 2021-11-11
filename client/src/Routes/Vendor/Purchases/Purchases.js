@@ -9,15 +9,13 @@ export const Purchases = () => {
   useEffect(() => getTotalMoney(), []);
 
   const getPurchases = async () => {
-    const response = await axios.get(
-      'http://localhost:8080/api/vendor/purchases'
-    );
+    const response = await axios.get('/api/vendor/purchases');
     const { data } = response.data;
     setPurchaseHistory(data);
   };
 
   const getTotalMoney = async () => {
-    const response = await axios.get('http://localhost:8080/api/vendor/money');
+    const response = await axios.get('/api/vendor/money');
     const { total_money } = response.data.data.items;
     setTotalMoney(total_money);
   };

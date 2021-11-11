@@ -19,9 +19,7 @@ export const FetchItems = () => {
 
   const getListOfItems = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8080/api/customer/items'
-      );
+      const response = await axios.get('/api/customer/items');
 
       setItems(response.data.data.items);
     } catch (error) {
@@ -39,7 +37,7 @@ export const FetchItems = () => {
         });
       }
       const response = await axios.post(
-        `http://localhost:8080/api/customer/items/${itemId}/purchases`,
+        `/api/customer/items/${itemId}/purchases`,
         { money }
       );
 

@@ -4,20 +4,25 @@ const express = require('express');
 const cors = require('cors');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const morgan = require('morgan');
-
 const app = express();
-
+const path = require('path');
 require('dotenv').config();
-
 const db = require('./db/db.js');
 
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
+if (process.env.NODE_ENV === 'production') {
+  // serve static content
+  app.use(express.static(path.join(__dirname, 'client/build')));
+}
 // Customer routes:
-
 // Get all items
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + 'client/build/index.html'));
+});
 app.get('/api/customer/items', async (req, res) => {
   try {
     const results = await db.query(

@@ -18,10 +18,7 @@ export const UpdateItem = () => {
         quantity,
       };
 
-      const response = await axios.put(
-        `http://localhost:8080/api/vendor/items/${itemId}`,
-        newPut
-      );
+      const response = await axios.put(`/api/vendor/items/${itemId}`, newPut);
 
       console.log(response.data.status);
       addToast('Item updated successfully', {

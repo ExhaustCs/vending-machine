@@ -9,9 +9,7 @@ export const GetItems = () => {
   useEffect(() => fetchItems(), []);
   const fetchItems = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8080/api/customer/items'
-      );
+      const response = await axios.get('/api/customer/items');
       setItem(response.data.data.items);
     } catch (error) {
       console.error(error);

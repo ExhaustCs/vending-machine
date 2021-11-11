@@ -34,10 +34,7 @@ export const AddItem = () => {
         quantity,
       };
 
-      const response = await axios.post(
-        'http://localhost:8080/api/vendor/items',
-        newPost
-      );
+      const response = await axios.post('/api/vendor/items', newPost);
 
       //   setResponse(JSON.stringify(response.data.data));
       setItemId(response.data.data.id);
