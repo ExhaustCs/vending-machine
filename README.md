@@ -1,4 +1,4 @@
-# [Completed] Vending Machine Website
+# Vending Machine Website
 
 This machine has a list of products and their id, descriptions, and costs. It also tracks all machine activity during transactions.
 Stack used:
